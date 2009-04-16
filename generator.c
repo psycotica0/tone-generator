@@ -24,13 +24,47 @@ void populate(void* data, Uint8 *stream, int len) {
 	}
 }
 
+void usage() {
+	puts ("Usage: generator freq [duration]\nWhere:\n\tfreq is the frequency of the tone, given in Hz.\n\tduration is optional. It defines the number of seconds the tone should play for.\n\t\tIf not given, it plays for 1 second.");
+}
+
 int main(int argc, char* argv[]) {
 	/* This will hold our data */
 	SDL_AudioSpec spec;
 	/* This will hold the requested frequency */
-	int reqFreq = 440;
+	long reqFreq = 440;
 	/* This is the duration to hold the note for */
 	int duration = 1;
+
+	/* Process Command Line Arguments */
+	if (argc <= 1) {
+		/* Nothing Given, output usage */
+		usage();
+		exit(EXIT_FAILURE);
+	} else if (argc >= 2) {
+		/* Has frequency */
+		reqFreq = strtol(argv[1], NULL, 10);
+		if (errno == EINVAL) {
+			fprintf (stderr, "Frequency '%s' is invalid\n", argv[1]);
+			usage();
+			exit(EXIT_FAILURE);
+		}
+
+		if (argc >= 3) {
+			/* Has duration */
+			duration = (int) strtol(argv[2], NULL, 10);
+			if (errno == EINVAL) {
+				fprintf (stderr,"Duration '%s' is invalid\n", argv[2]);
+				usage();
+				exit(EXIT_FAILURE);
+			}
+		}
+
+		if (argc >=4) {
+			/* Who knows what's here */
+			puts ("Warning: Arguments found past frequency and duration, disregarding them\n");
+		}
+	} 
 
 	/* Set up the requested settings */
 	spec.freq = FREQ;
