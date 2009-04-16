@@ -18,7 +18,8 @@ float sinStep;
 #define VOLUME 127.0
 
 void populate(void* data, Uint8 *stream, int len) {
-	for (int i=0; i<len; i++) {
+	int i=0;
+	for (i=0; i<len; i++) {
 		/* Just fill the stream with sine! */
 		stream[i] = (Uint8) (VOLUME * sinf(sinPos))+127;
 		sinPos += sinStep;
