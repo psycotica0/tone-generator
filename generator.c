@@ -14,12 +14,12 @@ float sinStep;
 #define SAMPLES 8192 
 
 /* This is basically an arbitrary number */
-#define VOLUME 10.0
+#define VOLUME 127.0
 
 void populate(void* data, Uint8 *stream, int len) {
 	for (int i=0; i<len; i++) {
 		/* Just fill the stream with sine! */
-		stream[i] = (Uint8) (VOLUME * sinf(sinPos));
+		stream[i] = (Uint8) (VOLUME * sinf(sinPos))+127;
 		sinPos += sinStep;
 	}
 }
