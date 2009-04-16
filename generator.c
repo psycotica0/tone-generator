@@ -4,6 +4,7 @@
 #include <sys/types.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <errno.h>
 
 /* These are in charge of maintaining our sine function */
 float sinPos;
