@@ -1,8 +1,8 @@
 .PHONY: clean
 
 generator: generator.c
-	g++ -o generator `sdl-config --cflags --libs` generator.c
+	$(CC) -o generator `sdl-config --cflags --libs` generator.c
 
 clean: 
-	rm -f generator
+	$(RM) generator
 
