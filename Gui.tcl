@@ -2,8 +2,8 @@
 package require Tk
 
 proc sound {} {
-	global freq dur
-	if [catch {exec "./generator" $freq $dur} results] {
+	global freq dur argv0
+	if [catch {exec [file join [file dirname $argv0] "generator"] $freq $dur} results] {
 		tk_messageBox -message "Error: $results"
 	}
 }
