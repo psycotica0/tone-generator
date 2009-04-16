@@ -46,7 +46,6 @@ int main(int argc, char* argv[]) {
 		reqFreq = strtol(argv[1], NULL, 10);
 		if (errno == EINVAL) {
 			fprintf (stderr, "Frequency '%s' is invalid\n", argv[1]);
-			usage();
 			exit(EXIT_FAILURE);
 		}
 
@@ -55,7 +54,6 @@ int main(int argc, char* argv[]) {
 			duration = (int) strtol(argv[2], NULL, 10);
 			if (errno == EINVAL) {
 				fprintf (stderr,"Duration '%s' is invalid\n", argv[2]);
-				usage();
 				exit(EXIT_FAILURE);
 			}
 		}
