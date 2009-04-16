@@ -3,7 +3,7 @@
 generator: generator.c
 	$(CC) -o generator `sdl-config --cflags --libs` generator.c
 
-bundle: 
+bundle: generator
 	sh makeAppBundle
 
 clean: 
