@@ -95,4 +95,6 @@ int main(int argc, char* argv[]) {
 
 	/* Close audio channel */
 	SDL_CloseAudio();
+
+	return 0;
 }
